@@ -1,0 +1,17 @@
+group 'org.seniorsigan'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    repositories {
+        jcenter()
+    }
+    buildscript {
+        repositories {
+            jcenter()
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}
