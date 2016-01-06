@@ -1,3 +1,5 @@
+import sun.jvmstat.monitor.MonitoredVmUtil
+
 group 'org.seniorsigan'
 version '1.0-SNAPSHOT'
 
@@ -23,3 +25,5 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile project(":core")
 }
+
+mainClassName = 'org.seniorsigan.downloader.cli.Application'
