@@ -21,14 +21,18 @@ class HomeController
         @PathVariable("id") id: String
     ) {
         println(id)
-        response.contentType = "application/zip"
         try {
+            response.contentType = "application/zip"
             response.setHeader("Content-Disposition", "attachment; filename=downloader-$id.zip")
             service.saveAudioToZip(id, response.outputStream)
             response.flushBuffer()
         } catch (e: Exception) {
             println(e.message)
-            response.status = 404
+            if (!response.isCommitted) {
+                response.reset()
+                response.writer?.print(e.message)
+                response.status = 404
+            }
         }
     }
 }

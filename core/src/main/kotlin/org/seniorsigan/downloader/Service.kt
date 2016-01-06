@@ -70,7 +70,11 @@ class Service {
     private fun get(url: String): String {
         val request = Request.Builder().url(url).get().build()
         val response = client.newCall(request).execute()
-        return response.body().string()
+        if (response != null && response.isSuccessful) {
+            return response.body().string()
+        } else {
+            throw Exception("Can't load $url: ${response?.message()}")
+        }
     }
 
     private fun getAndSave(url: String, name: String) {
@@ -84,7 +88,11 @@ class Service {
     private fun getInputStream(url: String): InputStream {
         val request = Request.Builder().url(url).get().build()
         val response = client.newCall(request).execute()
-        return response.body().byteStream()
+        if (response != null && response.isSuccessful) {
+            return response.body().byteStream()
+        } else {
+            throw Exception("Can't load $url: ${response?.message()}")
+        }
     }
 
     private fun buildPath(name: String): String {

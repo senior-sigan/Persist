@@ -8,7 +8,7 @@ import java.util.zip.ZipOutputStream
 
 class ZipService {
     fun pack(files: List<RemoteFile>, os: OutputStream) {
-        if (files.isEmpty()) throw Exception("Nothing to download and zip")
+        if (files.isEmpty()) throw Exception("Nothing to download")
         val zos = ZipOutputStream(os)
         files.forEach {
             addToZip(it.name, it.stream, zos)
