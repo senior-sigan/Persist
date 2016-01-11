@@ -25,6 +25,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'com.domingosuarez.boot:spring-boot-starter-jade4j:0.3.1'
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+    runtime('org.postgresql:postgresql:9.4-1201-jdbc41')
+    compile('org.flywaydb:flyway-core:3.2.1')
     compile project(":core")
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

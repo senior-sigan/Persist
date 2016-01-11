@@ -134,13 +134,14 @@ class Service {
         println("All audios saved to $path")
     }
 
-    fun saveAudioToZip(id: String, os: OutputStream) {
+    fun saveAudioToZip(id: String, os: OutputStream): List<Audio> {
         if (id.isBlank()) throw Exception("post id can't be empty")
         val zip = ZipService()
         println("Start loading audios")
         val posts = getWall(id)
         val audios = selectAudio(posts)
         zip.pack(audios.map { RemoteFile(it.url, it.name(), getInputStream(it.url)) }, os)
+        return audios
     }
 
     fun saveAudioToZip(id: String) {

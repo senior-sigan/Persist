@@ -1,0 +1,15 @@
+server:
+    port: 9000
+
+spring:
+    jade4j:
+        caching: false
+        prettyPrint: true
+
+    datasource:
+        url: jdbc:postgresql://localhost:5432/persist_dev
+        username: persist
+        password: persistpwd
+        test-on-borrow: true
+        remove-abandoned: true
+        validation-query: 'SELECT 1'
