@@ -59,5 +59,10 @@ object Application {
                 }
             }
         })
+
+        get("/requests", { req, res ->
+            val models = model.getAllRequests()
+            gson.toJson(models)
+        })
     }
 }

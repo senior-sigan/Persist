@@ -22,4 +22,31 @@ class RequestModel(
             conn.close()
         }
     }
+
+    fun getAllRequests(): List<RequestData> {
+        val conn = sql.open()
+        try {
+            val metaList = conn
+                .createQuery("SELECT meta FROM request ORDER BY created_at")
+                .executeAndFetchTable()
+                .rows().map {
+                    it.getString("meta")
+                }
+            return metaList.map {
+                gson.fromJson(it, RequestData::class.java)
+            }
+        } finally {
+            conn.close()
+        }
+    }
 }
+
+data class RequestData(
+    val url: String,
+    val audios: List<AudioModel>
+)
+
+data class AudioModel(
+    val title: String,
+    val artist: String
+)
