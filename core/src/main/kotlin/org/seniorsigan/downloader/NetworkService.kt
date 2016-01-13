@@ -5,6 +5,7 @@ import com.google.api.client.http.HttpTransport
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.gson.*
 import java.io.InputStream
+import java.io.OutputStream
 import java.lang.reflect.Type
 import java.util.*
 
@@ -38,10 +39,21 @@ class NetworkService(
     }
 
     fun getInputStream(url: String): InputStream {
+        println("Load $url")
         val request = requestFactory.buildGetRequest(GenericUrl(url))
         val response = request.execute()
         if (response != null && response.isSuccessStatusCode) {
             return response.content
+        } else {
+            throw Exception("Can't load $url: ${response?.statusMessage}")
+        }
+    }
+
+    fun download(url: String, out: OutputStream) {
+        val request = requestFactory.buildGetRequest(GenericUrl(url))
+        val response = request.execute()
+        if (response != null && response.isSuccessStatusCode) {
+            response.download(out)
         } else {
             throw Exception("Can't load $url: ${response?.statusMessage}")
         }

@@ -1,29 +1,14 @@
 package org.seniorsigan.downloader
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.slf4j.LoggerFactory
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.stereotype.Service
+import java.util.logging.Logger
 
-@Service
-class RequestRepository
-@Autowired constructor(
-    private val jdbcTemplate: JdbcTemplate,
-    private val objectMapper: ObjectMapper
-) {
+class RequestRepository {
     companion object {
-        val LOG = LoggerFactory.getLogger(RequestRepository::class.java)
+        val LOG = Logger.getLogger("RequestRepository")
     }
 
     fun save(data: Any) {
-        try {
-            val meta = objectMapper.writeValueAsString(data)
-            LOG.info("Save to db: $meta")
-            jdbcTemplate.update(
-                "INSERT INTO request(meta) VALUES(?::jsonb)", meta)
-        } catch(e: Exception) {
-            LOG.error("Can't save to db: ${e.message}", e)
-        }
+        LOG.info("Save to db: $data")
+        //TODO: save to db
     }
 }

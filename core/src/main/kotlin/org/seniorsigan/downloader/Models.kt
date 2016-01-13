@@ -1,6 +1,7 @@
 package org.seniorsigan.downloader
 
 import java.io.InputStream
+import java.io.OutputStream
 
 data class Audio(
     val url: String,
