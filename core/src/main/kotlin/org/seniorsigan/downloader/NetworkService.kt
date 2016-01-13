@@ -1,14 +1,16 @@
 package org.seniorsigan.downloader
 
 import com.google.api.client.http.GenericUrl
+import com.google.api.client.http.HttpTransport
 import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.gson.*
 import java.io.InputStream
 import java.lang.reflect.Type
 import java.util.*
 
-class NetworkService {
-    private val transport = NetHttpTransport()
+class NetworkService(
+    private val transport: HttpTransport = NetHttpTransport()
+) {
     private val requestFactory = transport.createRequestFactory()
 
     private val gsonBuilder = GsonBuilder().registerTypeAdapter(Date::class.java, DateDeserializer())

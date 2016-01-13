@@ -7,13 +7,13 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Service
 
 @Service
-class RequestServise
+class RequestRepository
 @Autowired constructor(
     private val jdbcTemplate: JdbcTemplate,
     private val objectMapper: ObjectMapper
 ) {
     companion object {
-        val LOG = LoggerFactory.getLogger(RequestServise::class.java)
+        val LOG = LoggerFactory.getLogger(RequestRepository::class.java)
     }
 
     fun save(data: Any) {

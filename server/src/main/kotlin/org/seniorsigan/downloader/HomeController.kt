@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse
 class HomeController
 @Autowired constructor(
     val service: Service,
-    val requestServise: RequestServise
+    val requestRepository: RequestRepository
 ) {
     @RequestMapping(value = "/", method = arrayOf(RequestMethod.GET))
     fun home() = "index"
@@ -29,7 +29,7 @@ class HomeController
             response.setHeader("Content-Disposition", "attachment; filename=downloader-$id.zip")
             val audios = service.saveAudioToZip(id, response.outputStream)
             response.flushBuffer()
-            requestServise.save(mapOf(
+            requestRepository.save(mapOf(
                 "ip" to request.remoteAddr,
                 "host" to request.remoteHost,
                 "url" to "https://vk.com/wall$id",
