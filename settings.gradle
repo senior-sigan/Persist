@@ -1,3 +1,5 @@
 rootProject.name = 'downloader'
 
 include 'core', 'cli', 'server'
+include 'sparkServer'
+
