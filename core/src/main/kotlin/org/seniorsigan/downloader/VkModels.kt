@@ -45,7 +45,7 @@ data class PhotoAttachment(
     var height: Int = 0
 ) {
     fun photoUrl(): String? {
-        return listOf(src, src_xxbig, src_xbig, src_big, src_small).firstOrNull { it.isNotBlank() }
+        return listOf(src_xxbig, src_xbig, src_big, src_small, src).firstOrNull { it.isNotBlank() }
     }
 }
 

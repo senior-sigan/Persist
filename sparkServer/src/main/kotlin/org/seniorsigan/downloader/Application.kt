@@ -62,9 +62,9 @@ object Application {
             }
         })
 
-        get("/requests", { req, res ->
+        get("/requests.json", { req, res ->
             val models = model.getAllRequests()
-            gson.toJson(models)
+            gson.toJson(models.distinctBy { it.url })
         })
     }
 }

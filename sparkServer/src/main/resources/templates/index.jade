@@ -13,6 +13,7 @@ html
     meta(property='og:description', content='Download audio files from a vk post as a zip file.')
     meta(property='og:url', content='persist.herokuapp.com')
     meta(property='og:locale', content='en_EN')
+    link(href='application.css', rel='stylesheet', type='text/css')
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   body
@@ -24,6 +25,9 @@ html
 
     input#vk-audio-input(style="width: 250px", value="https://vk.com/wall-25535241_83950")
     button#vk-audio-download Download
+
+    h3 Downloaded posts
+      section#covers
 
     hr
     footer Persist is created by
