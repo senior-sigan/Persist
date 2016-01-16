@@ -23,7 +23,7 @@
                     if (post.cover != undefined && post.cover != '') {
                         var link = document.createElement('a');
                         link.href = post.url;
-                        link.tagret = '_blank';
+                        link.target = '_blank';
                         var image = new Image();
                         image.src = post['cover'];
                         link.appendChild(image);
