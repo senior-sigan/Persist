@@ -42,11 +42,13 @@ class RequestModel(
 }
 
 data class RequestData(
-    val url: String,
-    val audios: List<AudioModel>
+    val id: String = "",
+    val url: String = "",
+    val cover: String = "",
+    val audios: List<AudioModel> = emptyList()
 )
 
 data class AudioModel(
-    val title: String,
-    val artist: String
+    val title: String = "",
+    val artist: String = ""
 )

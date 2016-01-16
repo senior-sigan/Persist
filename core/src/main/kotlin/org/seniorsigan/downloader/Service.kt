@@ -35,13 +35,24 @@ class Service(
         }.flatten().requireNoNulls()
     }
 
-    fun saveAudioToZip(id: String, os: OutputStream): List<Audio> {
+    fun selectPhoto(items: List<Item>): String? {
+        return items.map {
+            it.attachments.filter {
+                it.type == "photo" && it.photo != null
+            }.map {
+                it.photo?.photoUrl()
+            }.firstOrNull()
+        }.firstOrNull()
+    }
+
+    fun saveAudioToZip(id: String, os: OutputStream): Collection {
         if (id.isBlank()) throw Exception("post id can't be empty")
         val zip = ZipService()
         println("Start loading audios")
         val posts = getWall(id)
         val audios = selectAudio(posts)
+        val coverUrl = selectPhoto(posts)
         zip.pack(audios.map { RemoteFile(it.url, it.name(), network.getInputStream(it.url)) }, os)
-        return audios
+        return Collection(audios, coverUrl, "https://vk.com/wall$id")
     }
 }

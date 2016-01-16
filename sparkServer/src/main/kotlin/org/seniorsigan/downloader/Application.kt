@@ -41,13 +41,15 @@ object Application {
             try {
                 res.type("application/zip")
                 res.header("Content-Disposition", "attachment; filename=downloader$id.zip")
-                val audios = service.saveAudioToZip(id, res.raw().outputStream)
+                val collection = service.saveAudioToZip(id, res.raw().outputStream)
                 model.create(mapOf(
                     "ip" to req.ip(),
                     "host" to req.host(),
-                    "url" to "https://vk.com/wall$id",
+                    "id" to id,
+                    "url" to collection.url,
                     "provider" to "vk",
-                    "audios" to audios
+                    "audios" to collection.audios,
+                    "cover" to (collection.coverUrl ?: "")
                 ))
                 res.raw().flushBuffer()
             } catch (e: Exception) {

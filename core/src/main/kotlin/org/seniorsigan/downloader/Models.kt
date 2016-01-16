@@ -2,6 +2,12 @@ package org.seniorsigan.downloader
 
 import java.io.InputStream
 
+data class Collection(
+    val audios: List<Audio>,
+    val coverUrl: String?,
+    val url: String
+)
+
 data class Audio(
     val url: String,
     val title: String,

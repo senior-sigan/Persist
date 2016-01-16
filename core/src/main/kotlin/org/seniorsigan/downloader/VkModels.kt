@@ -35,8 +35,19 @@ data class AudioAttachment(
 
 data class PhotoAttachment(
     var id: Long = 0,
-    var owner_id: Long = 0
-)
+    var owner_id: Long = 0,
+    var src_small: String = "",
+    var src_big: String = "",
+    var src_xbig: String = "",
+    var src_xxbig: String = "",
+    var src: String = "",
+    var width: Int = 0,
+    var height: Int = 0
+) {
+    fun photoUrl(): String? {
+        return listOf(src, src_xxbig, src_xbig, src_big, src_small).firstOrNull { it.isNotBlank() }
+    }
+}
 
 data class LinkAttachment(
     var url: String = ""
