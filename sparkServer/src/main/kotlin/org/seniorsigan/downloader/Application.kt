@@ -66,5 +66,10 @@ object Application {
             val models = model.getAllRequests()
             gson.toJson(models.distinctBy { it.url })
         })
+        
+        get("/requests", { req, res ->
+            val models = model.getAllRequests()
+            ModelAndView(mapOf("requests" to models), "requests")
+        }, jade)
     }
 }

@@ -1,0 +1,25 @@
+doctype html
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        title Persist
+
+        meta(name='application-name', content='Persist')
+        meta(name='description', content='Download audio files from a vk post as a zip file.')
+        meta(name='keywords', content='audio,vk,vkontakt,download,save')
+        meta(property='og:title', content='Persist')
+        meta(property='og:description', content='Download audio files from a vk post as a zip file.')
+        meta(property='og:url', content='persist.herokuapp.com')
+        meta(property='og:locale', content='en_EN')
+        link(href='application.css', rel='stylesheet', type='text/css')
+    body
+        a(href="/")
+            h1 Persist
+        h3 Downloaded posts
+        section#covers
+            for request in requests
+                if (request.cover && request.url)
+                    a(href=request.url, target='_blank')
+                        img(src=request.cover)

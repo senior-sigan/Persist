@@ -17,7 +17,8 @@ html
 
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
   body
-    h1 Persist
+    a(href="/")
+      h1 Persist
     p Go to post you would like to persist. Copy the URL and past in the input.
     p For example you can save all audios from this post
       a(target='_blank', href='https://vk.com/wall-25535241_83950') https://vk.com/wall-25535241_83950
@@ -26,11 +27,11 @@ html
     input#vk-audio-input(style="width: 250px", value="https://vk.com/wall-25535241_83950")
     button#vk-audio-download Download
 
-    h3 Downloaded posts
-      section#covers
-
     hr
     footer Persist is created by
       a(target='_blank', href="https://twitter.com/senior_sigan") Senior Sigan
+      p
+        a(target='_blank', href="https://github.com/blan4/Persist") Source code&nbsp;
+        | on github
 
     script(src="vk-audio.js", type="text/javascript")

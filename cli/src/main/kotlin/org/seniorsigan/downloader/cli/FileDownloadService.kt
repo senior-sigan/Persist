@@ -12,7 +12,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 class FileDownloadService(
-    val path: String = "/tmp/downloader/"
+    val path: String
 ) {
     val network = NetworkService()
     val service = Service(network)
@@ -20,7 +20,7 @@ class FileDownloadService(
     private fun buildPath(name: String): String {
         try {
             File(path).mkdirs()
-            return path + name
+            return File(path, name).absolutePath
         } catch (e: Exception) {
             println(e.message)
             throw Exception("Can't create dir $path", e)
