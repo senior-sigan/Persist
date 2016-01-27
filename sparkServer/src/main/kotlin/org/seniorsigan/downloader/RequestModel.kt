@@ -34,6 +34,8 @@ class RequestModel(
                 }
             return metaList.map {
                 gson.fromJson(it, RequestData::class.java)
+            }.distinctBy { 
+                it.url
             }
         } finally {
             conn.close()
