@@ -3,11 +3,11 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext {
-        kotlinVersion = '1.0.0-beta-4584'
+        kotlinVersion = '1.0.4'
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
     }
 }
 

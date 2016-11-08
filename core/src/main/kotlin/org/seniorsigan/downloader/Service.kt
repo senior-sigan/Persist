@@ -32,7 +32,7 @@ class Service(
                     }
                 }
             }
-        }.flatten().requireNoNulls()
+        }.flatten().requireNoNulls().filter { it.url.isNotBlank() }
     }
 
     fun selectPhoto(items: List<Item>): String? {
